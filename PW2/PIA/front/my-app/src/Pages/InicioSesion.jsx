@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom';
-import style from './InicioSesion.module.css';
+import styleIS from './InicioSesion.module.css';
 import fotoInicio from '../Assets/FotoInicio1.png';
 
 export default function InicioSesion(){
@@ -10,22 +10,24 @@ export default function InicioSesion(){
     }
     return(
         <div>
-            <div className={style.inicioSesionImagenes}>
+            <div className={styleIS.inicioSesionImagenes}>
                 <img src={fotoInicio}></img>
             </div>
-            <div className={style.inicioSesionDatos}>
+            <div className={styleIS.inicioSesionDatos}>
                 <div>
                     <h4>Nombre de usuario/correo</h4>
+                    <input></input>
                 </div>
                 <div>
                     <h4>Contraseña</h4>
+                    <input></input>
                 </div>
                 <div>
-                    <Button onClick={navegarPublicaciones}>Iniciar Sesión</Button>
+                    <button className={styleIS.botonInicio} onClick={navegarPublicaciones}>Iniciar Sesión</button>
                 </div>
                 <div>
                     <h5>¿No tienes una cuenta?</h5>
-                    <Button onClick={navegarPublicaciones}>Regístrate</Button>
+                    <button onClick={navegarPublicaciones}>Regístrate</button>
                 </div>
             </div>
         </div>

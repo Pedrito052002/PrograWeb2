@@ -17,6 +17,23 @@
     height: 40px;
 }
 
+.botonInicio{
+    text-decoration: none;
+    color: rgb(255, 163, 171);
+    background-color: var(--logo);
+    width: 400px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 15px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color .3s;
+}
+
+.botonInicio:hover{
+    color: var(--btnPresionados);
+    background-color: white;
+}
 
 
 
