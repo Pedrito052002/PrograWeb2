@@ -1,0 +1,20 @@
+
+
+.small-image {
+  width: 100%; /* Asegúrate de que la imagen ocupe todo el ancho del card */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.card {
+  
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  text-align: center; /* Centrar el texto dentro de la tarjeta */
+  background-color: #fff; /* Color de fondo blanco */
+  transition: transform 0.2s; /* Efecto al pasar el ratón */
+}
+
+.card:hover {
+  transform: scale(1.1); /* Agranda ligeramente la tarjeta */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta la sombra para más efecto de profundidad */
+}

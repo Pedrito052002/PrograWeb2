@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 export default function Publicaciones() {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src="/Fotos/CupcackeChocolate.jpg" />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
@@ -16,6 +16,6 @@ export default function Publicaciones() {
       </Card.Body>
     </Card>
   );
-}
+} 
 
  

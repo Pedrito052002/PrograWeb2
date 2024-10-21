@@ -1,0 +1,63 @@
+body {
+    background-image: url('../Assets/fondoPrincipal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.456); /* Capa transparente blanca con 50% de opacidad */
+    z-index: -1;
+}
+
+.card-container {
+    padding: 20px;
+    flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #fffacd; /* Color de fondo amarillo claro */
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.sidebar p {
+    font-size: 24px; /* Tamaño de la fuente más grande */
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif; /* Cambia la fuente a Montserrat (asegúrate de tenerla o usar Google Fonts) */
+    color: #030303; /* Color de texto más oscuro */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 2px; /* Añade un poco de espaciado entre letras */
+    text-align: center; /* Centra el texto */
+    padding-bottom: 10px; /* Espacio debajo del título */
+    border-bottom: 2px solid #ddd; /* Línea decorativa debajo del texto */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinea las publicaciones a la izquierda */
+    margin: 0; /* Elimina margen extra */
+}
+
+.col-md-4 {
+    padding: 0; /* Elimina padding entre columnas */
+    margin-bottom: 10px; /* Ajusta el margen inferior si deseas algo de espacio vertical */
+}
+
