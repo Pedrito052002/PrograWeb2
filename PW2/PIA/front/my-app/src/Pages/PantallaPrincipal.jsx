@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
-import './PantallaPrincipal.css';
 
 export default function PantallaPrincipal() {
     const navigate = useNavigate();

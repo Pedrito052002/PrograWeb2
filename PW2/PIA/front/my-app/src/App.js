@@ -1,21 +1,17 @@
-
-
-import AppRouter from './Router/AppRouter';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './Router/AppRouter'; // Asegúrate de que la ruta sea correcta
 
 import './App.css';
 
 function App() {
   return (
-    
-
     <div className="App">
      
-      <AppRouter/>
-      
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
 
-      
-    
-      
     </div>
   );
 }
