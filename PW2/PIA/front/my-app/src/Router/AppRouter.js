@@ -24,8 +24,7 @@ function AppRouter() {
       body.style.backgroundColor = 'lightcoral'; // Fondo para PantallaPrincipal
     }
     
-    body.style.backgroundSize = "cover"; // Asegúrate de que la imagen cubra todo el fondo
-    body.style.backgroundPosition = "center"; // Centra la imagen
+    body.style.objectFit = "cover"; // Asegúrate de que la imagen cubra todo el fondo
 
     // Limpieza al salir del componente
     return () => {
