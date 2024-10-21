@@ -25,9 +25,9 @@ export default function InicioSesion(){
                 <div>
                     <button className={styleIS.botonInicio} onClick={navegarPublicaciones}>Iniciar Sesión</button>
                 </div>
-                <div>
+                <div className={styleIS.divInline}>
                     <h5>¿No tienes una cuenta?</h5>
-                    <button onClick={navegarPublicaciones}>Regístrate</button>
+                    <button className={styleIS.botonRegistrate} onClick={navegarPublicaciones}>Regístrate</button>
                 </div>
             </div>
         </div>
