@@ -19,7 +19,7 @@ export default function PantallaPrincipal() {
             
             <div className="d-flex">
                 <div className="sidebar">
-                    {/* Aquí puedes agregar el contenido de tu barra lateral*/}
+                    {/* Aquí puedes agregar el contenido de la barra lateral */}
                     <p>Categorías</p>
                 </div>
                 <div className="card-container ml-4">
