@@ -15,6 +15,13 @@ export default function MyNavbar() {
           {/* Botones de navegación */}
           <Button variant="outline-primary" className="me-2" href="#home">Inicio</Button>
           <Button variant="outline-primary" className="me-2" href="#productos">Pasteles</Button>
+
+
+
+          <Button variant="outline-primary" className="me-2" href="#productos">Mis Productos</Button>
+
+
+
           {/* Texto estático */}
           <span className="navbar-text me-3">¿Quiénes somos?</span>
           <span className="navbar-text me-3">¡Hola usuario!</span>

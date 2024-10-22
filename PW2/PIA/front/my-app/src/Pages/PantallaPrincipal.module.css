@@ -19,35 +19,11 @@ body::before {
 }
 
 .card-container {
-    padding: 20px;
+    padding: 30px;
     flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #fffacd; /* Color de fondo amarillo claro */
-    padding: 15px;
-    border-right: 1px solid #ddd;
-    color: #000;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-    height: 600px;
-    overflow-y: auto;
-}
 
-.sidebar p {
-    font-size: 24px; /* Tamaño de la fuente más grande */
-    margin: 0;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif; /* Cambia la fuente a Montserrat (asegúrate de tenerla o usar Google Fonts) */
-    color: #030303; /* Color de texto más oscuro */
-    text-transform: uppercase; /* Convierte el texto a mayúsculas */
-    letter-spacing: 2px; /* Añade un poco de espaciado entre letras */
-    text-align: center; /* Centra el texto */
-    padding-bottom: 10px; /* Espacio debajo del título */
-    border-bottom: 2px solid #ddd; /* Línea decorativa debajo del texto */
-}
 
 .row {
     display: flex;
@@ -61,3 +37,46 @@ body::before {
     margin-bottom: 10px; /* Ajusta el margen inferior si deseas algo de espacio vertical */
 }
 
+.PantallaPrincipalDatos {
+    width: 200px; /* Mantiene el ancho de la barra lateral */
+    background-color: #fffacd; /* Color de fondo amarillo claro */
+    padding: 10px; /* Espacio alrededor del contenido */
+    border-right: 1px solid #ddd; /* Línea a la derecha */
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para un efecto elevado */
+    margin-right: 150px;
+    height: 600px; /* Altura fija */
+    overflow-y: auto; /* Permite el scroll si hay mucho contenido */
+}
+
+.PantallaPrincipalDatos p {
+    font-size: 24px; /* Tamaño de la fuente más grande */
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif; /* Cambia la fuente a Montserrat */
+    color: #030303; /* Color de texto más oscuro */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-align: center; /* Centra el texto */
+    padding-bottom: 10px; /* Espacio debajo del título */
+    border-bottom: 2px solid #ddd; /* Línea decorativa debajo del texto */
+    margin-bottom: 20px; /* Espacio debajo del título para los botones */
+}
+
+
+.botonRosa {
+    background-color: pink; /* Color rosa */
+    color: black; /* Color del texto */
+    border: none; /* Sin borde */
+    width: 100%; /* Para que los botones sean del mismo tamaño */
+    text-align: center; /* Alinear texto al centro */
+    padding: 10px; /* Ajusta el padding para el tamaño deseado */
+    margin-bottom: 10px; /* Espacio entre botones */
+    font-size: 16px; /* Tamaño de la fuente */
+}
+
+.botonRosa:hover {
+    background-color: #ff69b4; /* Un tono rosa más oscuro al pasar el mouse */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+}

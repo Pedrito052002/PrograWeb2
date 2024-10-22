@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import InicioSesion from "../Pages/InicioSesion";
 import Dashboard from "../Pages/Dashboard";
 import PantallaPrincipal from "../Pages/PantallaPrincipal";
+import Pasteles from '../Pages/Pasteles';
+import Cupcakes from '../Pages/Cupcakes';
+import Cheesecake from  '../Pages/Cheesecakes';
 
 import fondoInicioSesion from '../Assets/FondoInicioSesion.png';
 
@@ -37,6 +40,10 @@ function AppRouter() {
         <Route exact path="/" element={<InicioSesion />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
         <Route exact path="/Inicio" element={<PantallaPrincipal />} />
+        <Route exact path="/Pasteles" element={<Pasteles />} />
+        <Route exact path="/Cupcakes" element={<Cupcakes />} />
+        <Route exact path="/Cheesecake" element={<Cheesecake />} />
+
       </Routes>
   );
 }
