@@ -5,27 +5,44 @@
 }
 
 
-/*Imagenes----------------------------------------------------------------------------------------------------*/
-.inicioSesionImagenes{
+/*Logo----------------------------------------------------------------------------------------------------*/
+.logo{
     position: absolute;
-    padding: 150px 0 0 115px;
+    padding: 10px 0 0 10px;
 }
 
-.inicioSesionImagenes img{
-    border-radius: 5%;
+.logo img{
+    width: 230px;
+    height: auto;
+}
+
+
+/*Barra Registro----------------------------------------------------------------------------------------------------*/
+.barraRegistro{
+    position: absolute;
+    color: whitesmoke;
+    font-size: 70px;
+    background-color: var(--botones);
+    width: 100%;
+    text-align: right;
+}
+
+.barraRegistro p{
+    padding-right: 30px;
 }
 
 
 /*Datos----------------------------------------------------------------------------------------------------*/
-.inicioSesionDatos{
-    padding: 200px 100px 15px 900px;
+.datosIzquierda{
+    padding: 250px 100px 15px 100px;
+    position: fixed;
 }
 
-.inicioSesionDatos div{
-    padding-bottom: 15px;
+.datosDerecha{
+    padding: 200px 100px 15px 800px;
 }
 
-.inicioSesionDatos input {
+.datosIzquierda input, .datosDerecha input{
     width: 400px;
     height: 40px;
     border: 1px solid #ccc; /* Color del borde */
@@ -34,10 +51,20 @@
     padding: 20px; /* Espaciado interno */
 }
 
-.inicioSesionDatos input::placeholder {
+.datosIzquierda input::placeholder, .datosDerecha input::placeholder{
     color: #707070; /* Color del placeholder */
     text-align: center;
 }
+
+.datosIzquierda div, .datosDerecha div{
+    padding-bottom: 15px;
+}
+
+
+
+
+
+
 
 .botonInicio{
     text-decoration: none;

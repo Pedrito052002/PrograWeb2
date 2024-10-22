@@ -2,13 +2,14 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 import InicioSesion from "../Pages/InicioSesion";
+import Registro from "../Pages/Registro";
 import Dashboard from "../Pages/Dashboard";
 import PantallaPrincipal from "../Pages/PantallaPrincipal";
 import Pasteles from '../Pages/Pasteles';
 import Cupcakes from '../Pages/Cupcakes';
 import Cheesecake from  '../Pages/Cheesecakes';
 
-import fondoInicioSesion from '../Assets/FondoInicioSesion.png';
+import FondoInicioSesion from '../Assets/FondoInicioSesion.png';
 
 //import Publicaciones from "../componentes/publicaciones"; // Asegúrate de importar el componente Publicaciones
 
@@ -20,7 +21,9 @@ function AppRouter() {
 
     // Cambia el fondo según la ruta
     if (location.pathname === '/') {
-      body.style.backgroundImage = `url(${fondoInicioSesion})`; // Fondo para InicioSesion
+      body.style.backgroundImage = `url(${FondoInicioSesion})`; // Fondo para InicioSesion
+    } else if (location.pathname === '/Registrarte') {
+      body.style.backgroundImage = `url(${FondoInicioSesion})`; // Fondo para Registro
     } else if (location.pathname === '/Dashboard') {
       body.style.backgroundColor = 'lightgreen'; // Fondo para Dashboard
     } else if (location.pathname === '/Inicio') {
@@ -38,6 +41,7 @@ function AppRouter() {
   return (
       <Routes>
         <Route exact path="/" element={<InicioSesion />} />
+        <Route exact path="/Registrarte" element={<Registro />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
         <Route exact path="/Inicio" element={<PantallaPrincipal />} />
         <Route exact path="/Pasteles" element={<Pasteles />} />

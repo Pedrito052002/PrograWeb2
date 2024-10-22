@@ -8,6 +8,9 @@ export default function InicioSesion(){
     const navegarPublicaciones = () => {
         navigate("/Inicio")
     }
+    const navegarRegistro = () => {
+        navigate("/Registrarte")
+    }
     return(
         <div>
             <div className={styleIS.inicioSesionImagenes}>
@@ -16,18 +19,18 @@ export default function InicioSesion(){
             <div className={styleIS.inicioSesionDatos}>
                 <div>
                     <h4>Nombre de usuario/correo</h4>
-                    <input></input>
+                    <input placeholder='usuario/ejemplo@correo.com'></input>
                 </div>
                 <div>
                     <h4>Contraseña</h4>
-                    <input></input>
+                    <input placeholder='**********'></input>
                 </div>
                 <div>
                     <button className={styleIS.botonInicio} onClick={navegarPublicaciones}>Iniciar Sesión</button>
                 </div>
                 <div className={styleIS.divInline}>
                     <h5>¿No tienes una cuenta?</h5>
-                    <button className={styleIS.botonRegistrate} onClick={navegarPublicaciones}>Regístrate</button>
+                    <button className={styleIS.botonRegistrate} onClick={navegarRegistro}>Regístrate</button>
                 </div>
             </div>
         </div>
