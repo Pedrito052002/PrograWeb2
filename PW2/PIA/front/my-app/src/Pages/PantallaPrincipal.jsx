@@ -5,6 +5,7 @@ import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
 import stylePP from './PantallaPrincipal.module.css';
 
+
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
     const navegarDashboard = () => {

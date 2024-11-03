@@ -1,21 +1,40 @@
 
-
+/*
 .small-image {
-  width: 100%; /* Asegúrate de que la imagen ocupe todo el ancho del card */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 100%; 
+  height: auto; 
 }
-
 .card {
   
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
-  text-align: center; /* Centrar el texto dentro de la tarjeta */
-  background-color: #fff; /* Color de fondo blanco */
-  transition: transform 0.2s; /* Efecto al pasar el ratón */
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  text-align: center; 
+  background-color: #fff; 
+  transition: transform 0.2s; 
 }
 
 .card:hover {
-  transform: scale(1.1); /* Agranda ligeramente la tarjeta */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta la sombra para más efecto de profundidad */
+  transform: scale(1.1); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+*/
+.card-container {
+  padding: 10px;
+  margin: 0; 
+  flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
 }
 
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Alinea las publicaciones a la izquierda */
+  margin: 0; /* Elimina margen extra */
+
+}
+
+.col-md-4 {
+  padding-left: 60px; /* Elimina padding entre columnas */
+  margin-bottom: 0; /* Ajusta el margen inferior si deseas algo de espacio vertical */
+}

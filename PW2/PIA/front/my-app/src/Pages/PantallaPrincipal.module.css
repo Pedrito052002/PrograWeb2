@@ -18,24 +18,7 @@ body::before {
     z-index: -1;
 }
 
-.card-container {
-    padding: 30px;
-    flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
-}
 
-
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Alinea las publicaciones a la izquierda */
-    margin: 0; /* Elimina margen extra */
-}
-
-.col-md-4 {
-    padding: 0; /* Elimina padding entre columnas */
-    margin-bottom: 10px; /* Ajusta el margen inferior si deseas algo de espacio vertical */
-}
 
 .PantallaPrincipalDatos {
     width: 200px; /* Mantiene el ancho de la barra lateral */
@@ -45,7 +28,7 @@ body::before {
     color: #000;
     font-family: 'Arial', sans-serif;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para un efecto elevado */
-    margin-right: 150px;
+    margin-right: 90px;
     height: 600px; /* Altura fija */
     overflow-y: auto; /* Permite el scroll si hay mucho contenido */
 }
@@ -59,7 +42,7 @@ body::before {
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
     letter-spacing: 2px; /* Espaciado entre letras */
     text-align: center; /* Centra el texto */
-    padding-bottom: 10px; /* Espacio debajo del título */
+    padding-bottom: 20px; /* Espacio debajo del título */
     border-bottom: 2px solid #ddd; /* Línea decorativa debajo del texto */
     margin-bottom: 20px; /* Espacio debajo del título para los botones */
 }

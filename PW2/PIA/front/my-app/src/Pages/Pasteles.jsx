@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
 
-
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
     const navegarPublicaciones = () => {
@@ -15,7 +14,9 @@ export default function PantallaPrincipal() {
         <>
             <MyNavbar />
             <Button onClick={navegarPublicaciones}>Volver</Button>
-            <div className="row">
+            <div className="card-container ml-4">
+               
+                    <div className="row">
                     
                         <div className="col-md-4">
                         
@@ -27,10 +28,21 @@ export default function PantallaPrincipal() {
                         <div className="col-md-4">
                             <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
                         </div>
+                        <div className="col-md-4">
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                        </div>
+                        <div className="col-md-4">
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                        </div>
+                        <div className="col-md-4">
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                        </div>
                         
                         
                       
                     </div>
+                </div>
+           
             
 
        

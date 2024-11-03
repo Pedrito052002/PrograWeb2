@@ -1,0 +1,24 @@
+.navbarCustom {
+  background-color: pink;
+  position: relative;
+  padding: 1 20px; /* Ajusta el padding lateral según sea necesario */
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1200px; /* Ajusta el valor según necesites */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+.logoContainer {
+  position: absolute;
+  top: 10%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Alinea el logo al centro */
+  z-index: 1; /* Asegura que el logo esté encima del navbar */
+}
+  
+.logoImage {
+  width: 190px;
+  height: auto;
+}
