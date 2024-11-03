@@ -48,7 +48,7 @@ export default function PantallaPrincipal() {
                     
                         <div className="col-md-4">
                         
-                            <Publicacion Titulo="Publicación 1" Contenido="Contenido publicación 1" />
+                            <Publicacion Titulo="Cupcake" Contenido="Sabor chocolate" />
                         </div>
                         <div className="col-md-4">
                             <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" />
