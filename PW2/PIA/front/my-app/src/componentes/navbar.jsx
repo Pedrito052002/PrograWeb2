@@ -23,18 +23,18 @@ export default function MyNavbar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           {/* Botones de navegación */}
-          <Button variant="outline-primary" style={{ marginRight: '100px' }} href="#home">Inicio</Button>
-          <Button variant="outline-primary" style={{ marginRight: '100px' }} href="#productos">Pasteles</Button>
-          <Button variant="outline-primary" style={{ marginRight: '300px' }} href="#productos">Mis Productos</Button>
+          <Button className={styles.customButton} style={{ marginRight: '100px' }} href="#home">Inicio</Button>
+          <Button className={styles.customButton} style={{ marginRight: '100px' }} href="#productos">Pasteles</Button>
+          <Button className={styles.customButton} style={{ marginRight: '300px' }} href="#productos">Mis Productos</Button>
 
     
 
 
 
           {/* Texto estático */}
-          <span className="navbar-text" style={{ marginRight: '100px' }}>¿Quiénes somos?</span>
-          <span className="navbar-text" style={{ marginRight: '100px' }}>¡Hola usuario!</span>
-          <Button variant="outline-primary" style={{ marginRight: '0px' }} href="#carrito">Carrito</Button>
+          <span className="navbar-text" style={{ color: 'black', marginRight: '100px' }}>¿Quiénes somos?</span>
+          <span className="navbar-text" style={{ color: 'black', marginRight: '100px' }}>¡Hola usuario!</span>
+          <Button className={styles.customButton} style={{ marginRight: '0px' }} href="#carrito">Carrito</Button>
         </Nav>
       </Navbar.Collapse>
     </Container>
