@@ -5,6 +5,11 @@ import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
 import stylePP from './PantallaPrincipal.module.css';
 
+//Importar las imágenes
+import CupcakeImage from '../Assets/Cupcacke.jpg';
+import cheese from '../Assets/Cheesecake.jpg';
+import pastel from '../Assets/Pastel.jpg';
+
 
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
@@ -48,13 +53,13 @@ export default function PantallaPrincipal() {
                     
                         <div className="col-md-4">
                         
-                            <Publicacion Titulo="Cupcake" Contenido="Sabor chocolate" />
+                            <Publicacion Titulo="Cupcake" Contenido="Sabor chocolate" Imagen={CupcakeImage}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" />
+                            <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" Imagen={cheese} />
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={pastel}/>
                         </div>
                         
                         

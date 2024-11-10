@@ -22,6 +22,7 @@
   padding: 10px;
   margin: 0; 
   flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
+  
 }
 
 
@@ -37,4 +38,14 @@
 .col-md-4 {
   padding-left: 60px; /* Elimina padding entre columnas */
   margin-bottom: 0; /* Ajusta el margen inferior si deseas algo de espacio vertical */
+} 
+
+.small-image {
+  width: 100%; /* Ajusta la imagen al ancho de la tarjeta */
+  height: 300px; /* Fija la altura para que todas tengan el mismo tamaño */
+  object-fit: cover; /* Recorta la imagen si es necesario para mantener la proporción */
+}
+
+.card-body Button{
+  margin-bottom: 10px; /* Agrega un espacio entre los botones */
 }
