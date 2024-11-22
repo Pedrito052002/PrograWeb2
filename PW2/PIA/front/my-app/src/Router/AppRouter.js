@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 import InicioSesion from "../Pages/InicioSesion";
@@ -8,7 +8,13 @@ import PantallaPrincipal from "../Pages/PantallaPrincipal";
 import Pasteles from '../Pages/Pasteles';
 import Cupcakes from '../Pages/Cupcakes';
 import Cheesecake from  '../Pages/Cheesecakes';
+import Vendedor from '../Pages/PantallaVendedor';
+//import reporteVentas from '../Pages/reporteVentas';
+//import reporteProductos from '../Pages/reporteProductos';
 
+//Pantalla de Reportes
+
+//BrowserRouter
 import FondoInicioSesion from '../Assets/FondoInicioSesion.png';
 
 //import Publicaciones from "../componentes/publicaciones"; // Asegúrate de importar el componente Publicaciones
@@ -47,6 +53,11 @@ function AppRouter() {
         <Route exact path="/Pasteles" element={<Pasteles />} />
         <Route exact path="/Cupcakes" element={<Cupcakes />} />
         <Route exact path="/Cheesecake" element={<Cheesecake />} />
+        <Route exact path="/PantallaVendedor" element={<Vendedor />} />
+        <Route exact path="/reporteVentas" element={<reporteVentas />} />
+        <Route exact path="/reporteProductos" element={<reporteProductos />} />
+        <Route exact path="/reporteClientes" element={<reporteClientes />} />
+        <Route exact path="/reporteBajasCalificaciones" element={<reporteBC />} />
 
       </Routes>
   );

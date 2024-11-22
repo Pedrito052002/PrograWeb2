@@ -13,10 +13,10 @@ export default function Publicacion({Titulo,Contenido,Imagen}) {
 
   return (
     <div className="card-container"> 
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem' }} >
         <Card.Img variant="top" src={Imagen} className="small-image" />
-        <Card.Body>
-          <Card.Title>{Titulo}</Card.Title>
+        <Card.Body className="card-body-content">
+          <Card.Title>{Titulo} </Card.Title>
           <Card.Text>
             {Contenido}
           </Card.Text>

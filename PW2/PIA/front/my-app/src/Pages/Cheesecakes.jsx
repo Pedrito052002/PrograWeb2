@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
 
+import cheese from '../Assets/Cheesecake.jpg';
+
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
     const navegarPublicaciones = () => {
@@ -20,22 +22,22 @@ export default function PantallaPrincipal() {
                     
                         <div className="col-md-4">
                         
-                            <Publicacion Titulo="Publicación 1" Contenido="Contenido publicación 1" />
+                            <Publicacion Titulo="Publicación 1" Contenido="Contenido publicación 1" Imagen={cheese}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" />
+                            <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" Imagen={cheese}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={cheese}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={cheese}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={cheese}/>
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" />
+                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={cheese}/>
                         </div>
                         
                         

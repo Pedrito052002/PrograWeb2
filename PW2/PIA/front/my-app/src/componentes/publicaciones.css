@@ -23,6 +23,8 @@
   margin: 0; 
   flex-grow: 1; /* Esto permitirá que el contenedor de tarjetas crezca y ocupe el espacio restante */
   
+  background-color: transparent; /* Quita el fondo blanco del Card completo si necesario */
+  border: none; /* Quita bordes si los tiene */
 }
 
 
@@ -36,7 +38,7 @@
 }
 
 .col-md-4 {
-  padding-left: 60px; /* Elimina padding entre columnas */
+  padding-left: 20px; /* Elimina padding entre columnas */
   margin-bottom: 0; /* Ajusta el margen inferior si deseas algo de espacio vertical */
 } 
 
@@ -47,5 +49,14 @@
 }
 
 .card-body Button{
-  margin-bottom: 10px; /* Agrega un espacio entre los botones */
+  margin: 5px 0; /* Espaciado vertical entre los botones */
+  width: 100%; /* Opcional: hace que los botones ocupen todo el ancho */
 }
+
+.card-body-content {
+  background-color: #fffacd; /* Fondo amarillo claro */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
