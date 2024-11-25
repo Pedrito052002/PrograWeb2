@@ -7,7 +7,7 @@ const userRoutes = require('./Rutas/Usuario.js');
 const app = express(); // Configuraciones del servidor
 
 // Configuración del puerto
-port = 3000;
+port = 3001;
 
 // Middlewares
 app.use(express.json());
