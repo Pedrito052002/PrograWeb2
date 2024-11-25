@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styleR from './Registro.module.css';
 import logo from '../Assets/LogoPostreria.png';
+import { registrarUsuario } from '../Services/usuariosServices';
 
 export default function Registro() {
     // Estado para el formulario
@@ -46,15 +47,14 @@ export default function Registro() {
     };
 
     // Registro del usuario
-    const handleRegister = () => {
-        // Validación completa de todos los campos
+    const handleRegister = async () => {
         if (
             !formData.username ||
             !formData.email ||
             !formData.password ||
             !formData.fullName ||
             !formData.phone ||
-            !formData.role || // Validar que el rol esté seleccionado
+            !formData.role ||
             !formData.address.city ||
             !formData.address.colony ||
             !formData.address.street ||
@@ -64,15 +64,16 @@ export default function Registro() {
             return;
         }
 
-        // Simular registro exitoso
-        console.log('Datos del usuario:', formData);
-        setError('');
-
-        // Navegación según el rol
-        if (formData.role === 'Cliente') {
-            navigate('/Inicio'); // Pantalla principal para clientes
-        } else if (formData.role === 'Vendedor') {
-            navigate('/PantallaVendedor'); // Pantalla para vendedores
+        try {
+            await registrarUsuario(formData); // Llama al servicio para registrar al usuario
+            setError('');
+            if (formData.role === 'Cliente') {
+                navigate('/Inicio');
+            } else if (formData.role === 'Vendedor') {
+                navigate('/PantallaVendedor');
+            }
+        } catch (error) {
+            setError('Error al registrar usuario.');
         }
     };
 

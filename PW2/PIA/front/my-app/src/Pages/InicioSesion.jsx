@@ -19,7 +19,7 @@ export default function InicioSesion(){
             <div className={styleIS.inicioSesionDatos}>
                 <div>
                     <h4>Nombre de usuario/correo</h4>
-                    <input placeholder='usuario/ejemplo@correo.com'></input>
+                    <input placeholder='ejemplo@correo.com'></input>
                 </div>
                 <div>
                     <h4>Contraseña</h4>
