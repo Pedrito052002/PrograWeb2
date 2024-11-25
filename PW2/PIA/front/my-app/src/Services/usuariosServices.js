@@ -14,4 +14,4 @@ export const registrarUsuario = async (usuario) => {
         throw error;
     }
 };
-//probar cambios
+//probar cambios otra vez xd
