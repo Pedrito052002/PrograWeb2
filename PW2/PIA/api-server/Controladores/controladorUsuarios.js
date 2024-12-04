@@ -1,56 +1,84 @@
-// Controladores/controladorUsuarios.js
-const Usuario = require('../models/usuario');  // Asegúrate de que esta importación sea correcta
+const Users = require('../models/usuario')
+const jwt = require('jsonwebtoken')
 
-// Función para registrar un usuario
-const registrarUsuario = async (req, res) => {
-  try {
-    const { nombreUsuario, correo, contraseña, rol, nombreCompleto, telefono, ciudad, colonia, calle, numero } = req.body;
 
-    // Crear nuevo usuario sin cifrado de contraseña
-    const nuevoUsuario = new Usuario({
+const signToken = (_id) => jwt.sign({ _id }, 'hola')
+
+const User = {
+  login: async (req, res) => {
+    const user = new Users(req.body)
+    try {
+      const isUser = await Users.findOne({ email: user.email, contraseña: user.contraseña})
+      if (!isUser) {
+        res.status(403).send('Email o contraseña inválida')
+      } else {
+        const signed = signToken(isUser._id)
+        res.status(200).send(signed)
+        
+      }
+    } catch (err) {
+      res.status(500).send(err.message)
+    }
+  },
+
+  get: async (req, res) => {
+    const { id } = req.params
+    const user = await Users.findOne({ _id: id })
+    res.status(200).send(user)
+  },
+
+  list: async (req, res) => {
+    const users = await Users.find()
+    res.status(200).send(users)
+  },
+  create: async (req, res) => {
+    const { nombreUsuario, email, contraseña, rol, nombreCompleto, telefono, ciudad, colonia, calle, numero } = req.body;
+  
+    // Validar que el correo no sea nulo o indefinido
+    if (!email) {
+      return res.status(400).send('email es obligatorio');
+    }
+  
+    const user = new Users({
       nombreUsuario,
-      correo,
-      contraseña,  // Aquí almacenamos la contraseña tal cual
+      email,
+      contraseña,
       rol,
       nombreCompleto,
       telefono,
       ciudad,
       colonia,
       calle,
-      numero
+      numero,
     });
-
-    // Guardar el usuario en la base de datos
-    await nuevoUsuario.save();
-    res.status(201).send({ mensaje: 'Usuario registrado con éxito' });
-  } catch (error) {
-    res.status(500).send({ error: 'Error al registrar usuario' });
-  }
-};
-
-// Función para iniciar sesión (ajústalo según tu lógica de autenticación)
-const iniciarSesion = async (req, res) => {
-  try {
-    const { correo, contraseña } = req.body;
-
-    // Buscar al usuario por correo (ajusta la lógica según tu necesidad)
-    const usuario = await Usuario.findOne({ correo });
-
-    if (!usuario) {
-      return res.status(400).send({ error: 'Usuario no encontrado' });
+  
+    try {
+      const isUser = await Users.findOne({ email });
+      if (isUser) {
+        return res.status(403).send('Usuario ya existente');
+      }
+  
+      const signed = signToken(user._id);
+  
+      await user.save();
+      res.status(201).send(signed);
+    } catch (err) {
+      res.status(500).send(err.message);
     }
+  },
+  update: async (req, res) => {
+    const { id } = req.params
+    const user = await Users.findOne({ _id: id })
+    Object.assign(user, req.body)
+    await user.save()
+    res.sendStatus(204)
+  },
+  destroy: async (req, res) => {
+    const { id } = req.params
+    const user = await Users.findOne({ _id: id })
+    await user.deleteOne({ _id: id })
+    res.sendStatus(204)
+  },
+}
 
-    if (usuario.contraseña !== contraseña) {
-      return res.status(400).send({ error: 'Contraseña incorrecta' });
-    }
-
-    res.status(200).send({ mensaje: 'Inicio de sesión exitoso' });
-  } catch (error) {
-    res.status(500).send({ error: 'Error al iniciar sesión' });
-  }
-};
-
-module.exports = {
-  registrarUsuario,
-  iniciarSesion
-};
+module.exports = User
