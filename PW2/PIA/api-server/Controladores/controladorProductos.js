@@ -15,16 +15,13 @@ const Producto = {
     res.status(200).send(productos)
   },
   create: async (req, res) => {
-    const producto = new Productos(req.body)
     try {
-      const saveProduct = await producto.save()
-      
-      res.status(201).send(saveProduct)
-
+        const producto = new Productos(req.body);
+        const saveProduct = await producto.save();
+        res.status(201).json(saveProduct); // Devuelve el producto creado
     } catch (err) {
-      res.status(500).send(err.message)
+        res.status(400).json({ error: 'Error al crear el producto', details: err.message });
     }
-
   },
   update: async (req, res) => {
     const { id } = req.params
