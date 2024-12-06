@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 
 const signToken = (_id) => jwt.sign({ _id }, 'hola')
-
+res.status(200).send(signed);
 const User = {
   login: async (req, res) => {
     const user = new Users(req.body)

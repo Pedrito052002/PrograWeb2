@@ -17,7 +17,7 @@ export default function PantallaPrincipal() {
         <>
             <MyNavbarVendedor />
             <Button onClick={navegarDashboard}>Cerrar sesion</Button>
-            <Button onClick={navegarDashboard}>Cerrar sesion</Button>
+            
 
 
             

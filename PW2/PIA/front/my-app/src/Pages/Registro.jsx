@@ -7,18 +7,16 @@ import { registrarUsuario } from '../Services/usuariosServices';
 export default function Registro() {
     // Estado para el formulario
     const [formData, setFormData] = useState({
-        username: '',
+        nombreUsuario: '',
         email: '',
-        password: '',
-        fullName: '',
-        phone: '',
-        role: '', // Nuevo campo para el rol
-        address: {
-            city: '',
-            colony: '',
-            street: '',
-            number: '',
-        },
+        contraseña: '',
+        nombreCompleto: '',
+        telefono: '',
+        rol: '',
+        ciudad: '',
+        colonia: '',
+        calle: '', // Cambiado de street a calle
+        numero: '', // Cambiado de number a numero
     });
 
     // Estado para errores
@@ -28,52 +26,49 @@ export default function Registro() {
     // Manejo de cambios en los inputs
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-
-        if (name.includes('address.')) {
-            const addressField = name.split('.')[1];
-            setFormData((prev) => ({
-                ...prev,
-                address: {
-                    ...prev.address,
-                    [addressField]: value,
-                },
-            }));
-        } else {
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-        }
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
     // Registro del usuario
     const handleRegister = async () => {
         if (
-            !formData.username ||
+            !formData.nombreUsuario ||
             !formData.email ||
-            !formData.password ||
-            !formData.fullName ||
-            !formData.phone ||
-            !formData.role ||
-            !formData.address.city ||
-            !formData.address.colony ||
-            !formData.address.street ||
-            !formData.address.number
+            !formData.contraseña ||
+            !formData.nombreCompleto ||
+            !formData.telefono ||
+            !formData.rol ||
+            !formData.ciudad ||
+            !formData.colonia ||
+            !formData.calle ||
+            !formData.numero
         ) {
             setError('Por favor, llena todos los campos obligatorios.');
             return;
         }
-
+    
         try {
-            await registrarUsuario(formData); // Llama al servicio para registrar al usuario
+            const resultado = await registrarUsuario(formData);
             setError('');
-            if (formData.role === 'Cliente') {
+    
+            // Verificamos si la respuesta contiene un mensaje de éxito o un token JWT
+            if (resultado && resultado.message) {
+                alert('Registro exitoso: ' + resultado.message); 
+            } else {
+                // Si no hay mensaje, mostramos la respuesta completa (por ejemplo, un JWT)
+                alert('Registro exitoso. Respuesta del servidor: ' + resultado);
+            }
+    
+            if (formData.rol.toLowerCase() === 'cliente') {
                 navigate('/Inicio');
-            } else if (formData.role === 'Vendedor') {
+            } else if (formData.rol.toLowerCase() === 'vendedor') {
                 navigate('/PantallaVendedor');
             }
         } catch (error) {
-            setError('Error al registrar usuario.');
+            setError('Error al registrar usuario. Intenta nuevamente.');
         }
     };
 
@@ -89,9 +84,9 @@ export default function Registro() {
                 <div>
                     <h4>Nombre de usuario</h4>
                     <input
-                        name="username"
+                        name="nombreUsuario"
                         placeholder="usuarioEjemplo"
-                        value={formData.username}
+                        value={formData.nombreUsuario}
                         onChange={handleInputChange}
                     />
                 </div>
@@ -107,23 +102,23 @@ export default function Registro() {
                 <div>
                     <h4>Contraseña</h4>
                     <input
-                        name="password"
+                        name="contraseña"
                         type="password"
                         placeholder="**********"
-                        value={formData.password}
+                        value={formData.contraseña}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div>
                     <h4>Rol</h4>
                     <select
-                        name="role"
-                        value={formData.role}
+                        name="rol"
+                        value={formData.rol}
                         onChange={handleInputChange}
                     >
                         <option value="">Selecciona tu rol</option>
-                        <option value="Cliente">Cliente</option>
-                        <option value="Vendedor">Vendedor</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="vendedor">Vendedor</option>
                     </select>
                 </div>
             </div>
@@ -131,45 +126,54 @@ export default function Registro() {
                 <div>
                     <h4>Nombre completo</h4>
                     <input
-                        name="fullName"
+                        name="nombreCompleto"
                         placeholder="Nombre Apellidos"
-                        value={formData.fullName}
+                        value={formData.nombreCompleto}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div>
                     <h4>Teléfono</h4>
                     <input
-                        name="phone"
+                        name="telefono"
                         placeholder="123-456-7890"
-                        value={formData.phone}
+                        value={formData.telefono}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div>
-                    <h4>Dirección</h4>
+                    <h4>Ciudad</h4>
                     <input
-                        name="address.city"
+                        name="ciudad"
                         placeholder="Ciudad"
-                        value={formData.address.city}
+                        value={formData.ciudad}
                         onChange={handleInputChange}
                     />
+                </div>
+                <div>
+                    <h4>Colonia</h4>
                     <input
-                        name="address.colony"
+                        name="colonia"
                         placeholder="Colonia"
-                        value={formData.address.colony}
+                        value={formData.colonia}
                         onChange={handleInputChange}
                     />
+                </div>
+                <div>
+                    <h4>Calle</h4>
                     <input
-                        name="address.street"
+                        name="calle"
                         placeholder="Calle"
-                        value={formData.address.street}
+                        value={formData.calle}
                         onChange={handleInputChange}
                     />
+                </div>
+                <div>
+                    <h4>Número</h4>
                     <input
-                        name="address.number"
+                        name="numero"
                         placeholder="Número"
-                        value={formData.address.number}
+                        value={formData.numero}
                         onChange={handleInputChange}
                     />
                 </div>
