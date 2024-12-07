@@ -13,7 +13,12 @@ const User = {
         res.status(403).send('Email o contraseña inválida');
       } else {
         const signed = signToken(isUser._id);
-        res.status(200).send(signed);
+        res.status(200).send({
+          rol:isUser.rol,
+          token:signed
+          
+        });
+        
       }
     } catch (err) {
       res.status(500).send(err.message);

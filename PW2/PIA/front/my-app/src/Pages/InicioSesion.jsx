@@ -26,9 +26,21 @@ export default function InicioSesion() {
     const manejarLogin = async () => {
         const usuario = { email, contraseña };
         try {
-            const token = await loginUsuario(usuario);
-            localStorage.setItem('token', token); // Guarda el token en localStorage (puedes usarlo para autenticar en otras páginas)
-            navigate("/Inicio"); // Redirige a la pantalla principal
+            const login = await loginUsuario(usuario);
+            localStorage.setItem('token', login.token); // Guarda el token en localStorage (puedes usarlo para autenticar en otras páginas)
+            console.log(login);
+            localStorage.setItem('rol', login.rol);
+            if(login.rol === "vendedor"){
+
+                navigate("/PantallaVendedor")
+
+            }
+            if(login.rol === "cliente"){
+
+                navigate("/Inicio"); // Redirige a la pantalla principal
+
+            }
+            
         } catch (err) {
             setError('Email o contraseña inválida');
         }

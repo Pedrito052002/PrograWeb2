@@ -1,4 +1,4 @@
-//import Navbar from './navbar'
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import Publicacion from '../componentes/publicaciones';
@@ -10,60 +10,73 @@ import CupcakeImage from '../Assets/Cupcacke.jpg';
 import cheese from '../Assets/Cheesecake.jpg';
 import pastel from '../Assets/Pastel.jpg';
 
-
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
+    const [categorias, setCategorias] = useState([]); // Estado para las categorías
+
     const navegarDashboard = () => {
         navigate("/");
-    }
+    };
 
-    
-    const navegarPasteles = () => {
-        navigate("/Pasteles");
-    }
+    const navegarCategoria = (categoria) => {
+        console.log(`Navegando a categoría: ${categoria.nombreCategoria}`);
+        // Aquí puedes agregar navegación específica por categoría si es necesario
+    };
 
-    const navegarCupcakes = () => {
-        navigate("/Cupcakes");
-    }
+    // Función para obtener las categorías desde el backend
+    const obtenerCategorias = async () => {
+        const response = await fetch('http://localhost:3001/api/categoria'); // Endpoint de categorías
+        const data = await response.json();
+        setCategorias(data); // Guardar categorías en el estado
+    };
 
-    const navegarCheesecake = () => {
-        navigate("/Cheesecake");
-    }
+    useEffect(() => {
+        obtenerCategorias(); // Obtener categorías al montar el componente
+    }, []);
 
     return (
         <>
             <MyNavbar />
-            <Button onClick={navegarDashboard}>Cerrar sesion</Button>
+            <Button onClick={navegarDashboard}>Cerrar sesión</Button>
 
-
-            
             <div className="d-flex">
                 <div className={stylePP.PantallaPrincipalDatos}>
-                    {/* Aquí puedes agregar el contenido de la barra lateral */}
                     <p>Categorías</p>
 
-                    <Button className={stylePP.botonRosa} onClick={navegarPasteles}>Pasteles</Button>
-                    <Button className={stylePP.botonRosa} onClick={navegarCupcakes}>Cupcakes</Button>
-                    <Button className={stylePP.botonRosa} onClick={navegarCheesecake}>Cheesecake</Button>
-
+                    {/* Renderizar botones dinámicamente */}
+                    {categorias.map((categoria) => (
+                        <Button
+                            key={categoria._id}
+                            className={stylePP.botonRosa}
+                            onClick={() => navegarCategoria(categoria)}
+                        >
+                            {categoria.nombreCategoria}
+                        </Button>
+                    ))}
                 </div>
                 <div className="card-container ml-4">
-               
                     <div className="row">
-                    
                         <div className="col-md-4">
-                        
-                            <Publicacion Titulo="Cupcake" Contenido="Sabor chocolate" Imagen={CupcakeImage}/>
+                            <Publicacion
+                                Titulo="Cupcake"
+                                Contenido="Sabor chocolate"
+                                Imagen={CupcakeImage}
+                            />
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 2" Contenido="Contenido publicación 2" Imagen={cheese} />
+                            <Publicacion
+                                Titulo="Publicación 2"
+                                Contenido="Contenido publicación 2"
+                                Imagen={cheese}
+                            />
                         </div>
                         <div className="col-md-4">
-                            <Publicacion Titulo="Publicación 3" Contenido="Contenido publicación 3" Imagen={pastel}/>
+                            <Publicacion
+                                Titulo="Publicación 3"
+                                Contenido="Contenido publicación 3"
+                                Imagen={pastel}
+                            />
                         </div>
-                        
-                        
-                      
                     </div>
                 </div>
             </div>

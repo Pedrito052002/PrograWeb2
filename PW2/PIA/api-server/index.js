@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose'); // Importar Mongoose para MongoDB
 const userRoutes = require('./Rutas/Usuario.js');
 const productoRoutes = require('./Rutas/Producto.js')
+const categoryRoutes = require('./Rutas/Categoria.js')
 
 const app = express(); // Configuraciones del servidor
 
@@ -17,6 +18,7 @@ app.use(cors());
 // Traer Rutas
 app.use('/api', userRoutes);
 app.use('/api', productoRoutes);
+app.use('/api', categoryRoutes);
 // Conexión a MongoDB Atlas
 const MONGO_URI = 'mongodb+srv://pedrohdzaguila:p010302ha@clusterpetercinthia.8fu1d.mongodb.net/?retryWrites=true&w=majority&appName=ClusterPeterCinthia';
 mongoose.connect(MONGO_URI, {

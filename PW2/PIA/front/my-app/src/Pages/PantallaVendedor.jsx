@@ -6,11 +6,13 @@ import MyNavbarVendedor from '../componentes/navbarVendedor';
 export default function PantallaVendedor() {
     const navigate = useNavigate();
     const [productos, setProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]); // Estado para las categorías
     const [nuevoProducto, setNuevoProducto] = useState({
         nombreProducto: '',
         descripcion: '',
         precio: '',
-        inventario: ''
+        inventario: '',
+        categoria: '' // Esto será el ID de la categoría seleccionada
     });
 
     const navegarDashboard = () => {
@@ -50,8 +52,16 @@ export default function PantallaVendedor() {
         setProductos(data);
     }
 
+    // Función para obtener las categorías
+    const obtenerCategorias = async () => {
+        const response = await fetch('http://localhost:3001/api/categoria'); // Reemplaza con tu endpoint de categorías
+        const data = await response.json();
+        setCategorias(data); // Guardamos las categorías en el estado
+    }
+
     useEffect(() => {
         obtenerProductos();
+        obtenerCategorias(); // Llamamos a la función para obtener categorías al montar el componente
     }, []);
 
     return (
@@ -66,7 +76,7 @@ export default function PantallaVendedor() {
                     <input 
                         type="text" 
                         name="nombreProducto" 
-                        value={nuevoProducto.nombre} 
+                        value={nuevoProducto.nombreProducto} 
                         onChange={manejarCambio} 
                     />
                 </div>
@@ -97,6 +107,21 @@ export default function PantallaVendedor() {
                         onChange={manejarCambio} 
                     />
                 </div>
+                <div>
+                    <label>Categoría:</label>
+                    <select 
+                        name="categoria" 
+                        value={nuevoProducto.categoria} 
+                        onChange={manejarCambio}
+                    >
+                        <option value="">Selecciona una categoría</option>
+                        {categorias.map((categoria) => (
+                            <option key={categoria._id} value={categoria._id}>
+                                {categoria.nombreCategoria}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <Button type="submit">Agregar Producto</Button>
             </form>
 
@@ -104,7 +129,7 @@ export default function PantallaVendedor() {
             <ul>
                 {productos.map((producto) => (
                     <li key={producto._id}>
-                        {producto.nombreProducto} - {producto.descripcion} - ${producto.precio} - Inventario: {producto.inventario}
+                        {producto.nombreProducto} - {producto.descripcion} - ${producto.precio} - Inventario: {producto.inventario} - {producto.categoria?.nombreCategoria || "Sin categoría"}
                     </li>
                 ))}
             </ul>

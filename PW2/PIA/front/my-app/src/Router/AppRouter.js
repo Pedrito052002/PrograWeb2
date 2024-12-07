@@ -5,9 +5,6 @@ import InicioSesion from "../Pages/InicioSesion";
 import Registro from "../Pages/Registro";
 import Dashboard from "../Pages/Dashboard";
 import PantallaPrincipal from "../Pages/PantallaPrincipal";
-import Pasteles from '../Pages/Pasteles';
-import Cupcakes from '../Pages/Cupcakes';
-import Cheesecake from  '../Pages/Cheesecakes';
 import Vendedor from '../Pages/PantallaVendedor';
 //import reporteVentas from '../Pages/reporteVentas';
 //import reporteProductos from '../Pages/reporteProductos';
@@ -50,9 +47,7 @@ function AppRouter() {
         <Route exact path="/Registrarte" element={<Registro />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
         <Route exact path="/Inicio" element={<PantallaPrincipal />} />
-        <Route exact path="/Pasteles" element={<Pasteles />} />
-        <Route exact path="/Cupcakes" element={<Cupcakes />} />
-        <Route exact path="/Cheesecake" element={<Cheesecake />} />
+
         <Route exact path="/PantallaVendedor" element={<Vendedor />} />
         <Route exact path="/reporteVentas" element={<reporteVentas />} />
         <Route exact path="/reporteProductos" element={<reporteProductos />} />

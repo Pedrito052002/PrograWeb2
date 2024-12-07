@@ -48,10 +48,19 @@ export const loginUsuario = async (usuario) => {
             throw new Error(`Error ${response.status}: ${errorMessage}`);
         }
 
-        const token = await response.text(); // El token probablemente está en el cuerpo de la respuesta
-        console.log('Token recibido:', token);
+        const textResponse = await response.text();
+        console.log('Respuesta del servidor:', textResponse);
+        let data;
+        try {
+            data = JSON.parse(textResponse);
+            console.log('Usuario logueado:', data);
+        } catch (e) {
+            console.error('Error al convertir respuesta a JSON:', e);
+            // Manejar caso en que la respuesta no sea un JSON válido (por ejemplo, JWT)
+            data = textResponse; // Si no es JSON, lo dejamos como está (puede ser un token o un mensaje)
+        }
 
-        return token; // Devolvemos el token recibido
+        return data; // Devolvemos el token recibido
     } catch (error) {
         console.error('Error iniciando sesión:', error.message || error);
         throw error; // Propaga el error hacia el componente que lo llama
