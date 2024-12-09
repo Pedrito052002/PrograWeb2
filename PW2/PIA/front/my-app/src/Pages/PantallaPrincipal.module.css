@@ -21,7 +21,7 @@ body::before {
 
 
 .PantallaPrincipalDatos {
-    width: 200px; /* Mantiene el ancho de la barra lateral */
+    width: 300px; /* Mantiene el ancho de la barra lateral */
     background-color: #fffacd; /* Color de fondo amarillo claro */
     padding: 10px; /* Espacio alrededor del contenido */
     border-right: 1px solid #ddd; /* Línea a la derecha */
