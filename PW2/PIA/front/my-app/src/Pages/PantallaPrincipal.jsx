@@ -5,33 +5,32 @@ import Publicacion from '../componentes/publicaciones';
 import MyNavbar from '../componentes/navbar';
 import stylePP from './PantallaPrincipal.module.css';
 
-//Importar las imágenes
-import CupcakeImage from '../Assets/Cupcacke.jpg';
-import cheese from '../Assets/Cheesecake.jpg';
-import pastel from '../Assets/Pastel.jpg';
-
 export default function PantallaPrincipal() {
     const navigate = useNavigate();
     const [categorias, setCategorias] = useState([]); // Estado para las categorías
+    const [productos, setProductos] = useState([]); // Estado para los productos
 
     const navegarDashboard = () => {
         navigate("/");
     };
 
-    const navegarCategoria = (categoria) => {
-        console.log(`Navegando a categoría: ${categoria.nombreCategoria}`);
-        // Aquí puedes agregar navegación específica por categoría si es necesario
-    };
-
-    // Función para obtener las categorías desde el backend
+    // Obtener las categorías desde el backend
     const obtenerCategorias = async () => {
         const response = await fetch('http://localhost:3001/api/categoria'); // Endpoint de categorías
         const data = await response.json();
         setCategorias(data); // Guardar categorías en el estado
     };
 
+    // Obtener los productos desde el backend
+    const obtenerProductos = async () => {
+        const response = await fetch('http://localhost:3001/api/producto'); // Endpoint de productos
+        const data = await response.json();
+        setProductos(data); // Guardar productos en el estado
+    };
+
     useEffect(() => {
-        obtenerCategorias(); // Obtener categorías al montar el componente
+        obtenerCategorias(); // Llamada para obtener categorías
+        obtenerProductos(); // Llamada para obtener productos
     }, []);
 
     return (
@@ -48,7 +47,7 @@ export default function PantallaPrincipal() {
                         <Button
                             key={categoria._id}
                             className={stylePP.botonRosa}
-                            onClick={() => navegarCategoria(categoria)}
+                            onClick={() => console.log(`Navegando a categoría: ${categoria.nombreCategoria}`)}
                         >
                             {categoria.nombreCategoria}
                         </Button>
@@ -56,27 +55,20 @@ export default function PantallaPrincipal() {
                 </div>
                 <div className="card-container ml-4">
                     <div className="row">
-                        <div className="col-md-4">
-                            <Publicacion
-                                Titulo="Cupcake"
-                                Contenido="Sabor chocolate"
-                                Imagen={CupcakeImage}
-                            />
-                        </div>
-                        <div className="col-md-4">
-                            <Publicacion
-                                Titulo="Publicación 2"
-                                Contenido="Contenido publicación 2"
-                                Imagen={cheese}
-                            />
-                        </div>
-                        <div className="col-md-4">
-                            <Publicacion
-                                Titulo="Publicación 3"
-                                Contenido="Contenido publicación 3"
-                                Imagen={pastel}
-                            />
-                        </div>
+                        {/* Renderizar productos dinámicamente */}
+                        {productos.map((producto) => (
+                            <div className="col-md-4" key={producto._id}>
+                                <Publicacion
+                                    Titulo={producto.nombreProducto}
+                                    Contenido={producto.descripcion}
+                                    Imagen={
+                                        producto.imagen
+                                            ? `data:image/jpeg;base64,${producto.imagen}`
+                                            : 'https://via.placeholder.com/150' // Imagen genérica si no hay imagen
+                                    }
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

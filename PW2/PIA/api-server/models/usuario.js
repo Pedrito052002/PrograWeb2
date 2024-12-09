@@ -10,7 +10,13 @@ const usuarioSchema = new mongoose.Schema({
   ciudad: { type: String },
   colonia: { type: String },
   calle: { type: String },
-  numero: { type: String }
+  numero: { type: String },
+  carrito: [
+    {
+      producto: { type: mongoose.Schema.Types.ObjectId, ref: 'Producto' },
+      cantidad: { type: Number, default: 1 },
+    },
+  ],
 });
 
 module.exports = mongoose.model('Usuario', usuarioSchema); // Cambié 'usuarioSchem' por 'usuarioSchema'

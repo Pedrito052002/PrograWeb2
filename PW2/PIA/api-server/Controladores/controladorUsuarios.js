@@ -106,6 +106,50 @@ const User = {
       res.status(500).send(err.message);
     }
   },
+   // Nuevo: Agregar producto al carrito
+   addToCart: async (req, res) => {
+    const { userId } = req.params; // ID del usuario
+    const { productoId } = req.body; // ID del producto a agregar
+
+    try {
+      const user = await Users.findById(userId);
+      if (!user) {
+        return res.status(404).send('Usuario no encontrado');
+      }
+
+      // Buscar si el producto ya está en el carrito
+      const itemIndex = user.carrito.findIndex(item => item.producto.toString() === productoId);
+
+      if (itemIndex > -1) {
+        // Si el producto ya está, incrementamos la cantidad
+        user.carrito[itemIndex].cantidad += 1;
+      } else {
+        // Si no está, lo añadimos al carrito
+        user.carrito.push({ producto: productoId });
+      }
+
+      await user.save();
+      res.status(200).send(user.carrito); // Retornar el carrito actualizado
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  },
+
+  // Nuevo: Obtener el carrito del usuario
+  getCart: async (req, res) => {
+    const { userId } = req.params; // ID del usuario
+
+    try {
+      const user = await Users.findById(userId).populate('carrito.producto');
+      if (!user) {
+        return res.status(404).send('Usuario no encontrado');
+      }
+
+      res.status(200).send(user.carrito);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  },
 };
 
 module.exports = User;

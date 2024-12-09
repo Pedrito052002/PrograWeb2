@@ -36,6 +36,7 @@ const Categoria = {
     await categoria.deleteOne({ _id: id })
     res.sendStatus(204)
   },
+  
 }
 
 module.exports = Categoria
