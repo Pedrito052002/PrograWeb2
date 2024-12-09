@@ -4,26 +4,17 @@ import Card from 'react-bootstrap/Card';
 import { Modal } from 'react-bootstrap';
 import './publicaciones.css';
 
-export default function Publicacion({ Titulo, Contenido, Imagen, ProductoID, Precio }) {
+export default function Publicacion({ Titulo, Contenido, Imagen, ProductoID, agregarAlCarrito }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // Función para agregar al carrito
-  const agregarAlCarrito = async () => {
-    const producto = { idProducto: ProductoID, nombreProducto: Titulo, precio: Precio, cantidad: 1 };
-    const response = await fetch('http://localhost:3001/api/carrito', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(producto),
-    });
-
-    if (response.ok) {
-      alert('Producto agregado al carrito');
-    } else {
-      alert('Error al agregar el producto');
-    }
+  const handleAgregarAlCarrito = () => {
+    // Imprimir lo que se pasa al hacer clic en el botón "Agregar al Carrito"
+    console.log('Producto agregado al carrito:', ProductoID);
+    // Llamar a la función que pasa el padre para agregar al carrito
+    agregarAlCarrito(ProductoID);
   };
 
   return (
@@ -34,7 +25,7 @@ export default function Publicacion({ Titulo, Contenido, Imagen, ProductoID, Pre
           <Card.Title>{Titulo}</Card.Title>
           <Card.Text>{Contenido}</Card.Text>
           <Button variant="primary" onClick={handleShow}>Ver Detalles</Button>
-          <Button variant="primary" onClick={agregarAlCarrito}>Agregar al Carrito</Button>
+          <Button variant="primary" onClick={handleAgregarAlCarrito}>Agregar al Carrito</Button> {/* Usar la función pasada */}
         </Card.Body>
       </Card>
 

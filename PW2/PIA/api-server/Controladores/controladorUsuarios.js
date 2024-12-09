@@ -15,7 +15,8 @@ const User = {
         const signed = signToken(isUser._id);
         res.status(200).send({
           rol:isUser.rol,
-          token:signed
+          token:signed,
+          userId:isUser._id
           
         });
         

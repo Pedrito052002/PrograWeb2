@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styleIS from './InicioSesion.module.css';
@@ -27,22 +26,21 @@ export default function InicioSesion() {
         const usuario = { email, contraseña };
         try {
             const login = await loginUsuario(usuario);
-            localStorage.setItem('token', login.token); // Guarda el token en localStorage (puedes usarlo para autenticar en otras páginas)
-            console.log(login);
+            localStorage.setItem('token', login.token); // Guarda el token en localStorage
             localStorage.setItem('rol', login.rol);
-            if(login.rol === "vendedor"){
+            localStorage.setItem('userId', login.userId
 
-                navigate("/PantallaVendedor")
+            );
 
+
+            if (login.rol === "vendedor") {
+                navigate("/PantallaVendedor"); // Redirige a la pantalla de vendedor
+            } else if (login.rol === "cliente") {
+                navigate("/Inicio"); // Redirige a la pantalla principal de cliente
             }
-            if(login.rol === "cliente"){
 
-                navigate("/Inicio"); // Redirige a la pantalla principal
-
-            }
-            
         } catch (err) {
-            setError('Email o contraseña inválida');
+            setError('Email o contraseña inválida'); // Muestra mensaje de error
         }
     };
 
