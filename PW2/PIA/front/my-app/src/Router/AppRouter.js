@@ -7,6 +7,7 @@ import Dashboard from "../Pages/Dashboard";
 import PantallaPrincipal from "../Pages/PantallaPrincipal";
 import Vendedor from '../Pages/PantallaVendedor';
 import Carrito from '../componentes/Carrito';
+import ReporteProductos from "../Pages/reporteProductos";
 //import reporteVentas from '../Pages/reporteVentas';
 //import reporteProductos from '../Pages/reporteProductos';
 
@@ -51,7 +52,7 @@ function AppRouter() {
 
         <Route exact path="/PantallaVendedor" element={<Vendedor />} />
         <Route exact path="/reporteVentas" element={<reporteVentas />} />
-        <Route exact path="/reporteProductos" element={<reporteProductos />} />
+        <Route exact path="/reporteProductos" element={<ReporteProductos />} />
         <Route exact path="/reporteClientes" element={<reporteClientes />} />
         <Route exact path="/reporteBajasCalificaciones" element={<reporteBC />} />
         <Route exact path="/carrito" element={<Carrito />} />

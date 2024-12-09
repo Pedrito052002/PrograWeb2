@@ -18,6 +18,7 @@ export default function MyNavbarVendedor() {
     const navegarReporteProductos = () => navigate('/reporteProductos');
     const navegarReporteClientes = () => navigate('/reporteClientes');
     const navegarReporteBC = () => navigate('/reporteBajasCalificaciones');
+    
   return (
     <>
     <div className={styles.logoContainer}>

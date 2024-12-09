@@ -7,6 +7,7 @@ const userRoutes = require('./Rutas/Usuario.js');
 const productoRoutes = require('./Rutas/Producto.js')
 const categoryRoutes = require('./Rutas/Categoria.js')
 const carritoRoutes = require('./Rutas/Carrito.js')
+const compraRoutes = require('./Rutas/Compras.js');
 
 const app = express(); // Configuraciones del servidor
 
@@ -22,7 +23,7 @@ app.use('/api', userRoutes);
 app.use('/api', productoRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', carritoRoutes);
-
+app.use('/api/', compraRoutes);
 
 
 // Conexión a MongoDB Atlas
