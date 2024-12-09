@@ -1,31 +1,43 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-//import Cupcacke from '../Assets/Cupcacke.jpg';
-import { Modal } from 'react-bootstrap'; // Importa Modal
+import { Modal } from 'react-bootstrap';
 import './publicaciones.css';
 
-export default function Publicacion({Titulo,Contenido,Imagen}) {
-  const [show, setShow] = useState(false); // Estado para controlar el modal
+export default function Publicacion({ Titulo, Contenido, Imagen, ProductoID, Precio }) {
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false); // Función para cerrar el modal
-  const handleShow = () => setShow(true); // Función para abrir el modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // Función para agregar al carrito
+  const agregarAlCarrito = async () => {
+    const producto = { idProducto: ProductoID, nombreProducto: Titulo, precio: Precio, cantidad: 1 };
+    const response = await fetch('http://localhost:3001/api/carrito', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(producto),
+    });
+
+    if (response.ok) {
+      alert('Producto agregado al carrito');
+    } else {
+      alert('Error al agregar el producto');
+    }
+  };
 
   return (
-    <div className="card-container"> 
-      <Card style={{ width: '18rem' }} >
+    <div className="card-container">
+      <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={Imagen} className="small-image" />
         <Card.Body className="card-body-content">
-          <Card.Title>{Titulo} </Card.Title>
-          <Card.Text>
-            {Contenido}
-          </Card.Text>
+          <Card.Title>{Titulo}</Card.Title>
+          <Card.Text>{Contenido}</Card.Text>
           <Button variant="primary" onClick={handleShow}>Ver Detalles</Button>
-          <Button variant="primary">Agregar al Carrito</Button>
+          <Button variant="primary" onClick={agregarAlCarrito}>Agregar al Carrito</Button>
         </Card.Body>
       </Card>
 
-      {/* Modal para mostrar detalles */}
       <Modal show={show} onHide={handleClose} size="sm">
         <Modal.Header closeButton>
           <Modal.Title>{Titulo}</Modal.Title>
@@ -33,7 +45,6 @@ export default function Publicacion({Titulo,Contenido,Imagen}) {
         <Modal.Body>
           <img src={Imagen} alt={Titulo} style={{ width: '100%' }} />
           <p>{Contenido}</p>
-          {/* Puedes agregar más información aquí si es necesario */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
